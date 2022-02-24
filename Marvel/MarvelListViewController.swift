@@ -25,7 +25,7 @@ class MarvelListViewController: UIViewController {
         marvelList.delegate = self
         showActivityIndicator()
         // Fetch marvel list API
-        marvelList.fetchMarvelList()
+        marvelList.fetchMarvelList(offsetValue: Constants.offsetValue)
     }
 
 }
@@ -38,24 +38,26 @@ extension MarvelListViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return marvelList.marvelModelList?.data.results.count ?? 0
+        return marvelList.marvelResultList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.marvelListCollectionCell, for: indexPath as IndexPath) as? MarvelListCollectionCell else { return UICollectionViewCell() }
-        if let value = marvelList.marvelModelList?.data.results[indexPath.row] {
-            // Update cell
-            cell.updateCell(model: value)
-        }
+        // Update cell
+        cell.updateCell(model: marvelList.marvelResultList[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let marvelDetailView = self.storyboard?.instantiateViewController(withIdentifier: Constants.marvelDetailViewController) as? MarvelDetailViewController {
-            marvelDetailView.characterID = marvelList.marvelModelList?.data.results[indexPath.row].id ?? 0
-            marvelDetailView.pageTitle = marvelList.marvelModelList?.data.results[indexPath.row].name
+            marvelDetailView.characterID = marvelList.marvelResultList[indexPath.row].id
+            marvelDetailView.pageTitle = marvelList.marvelResultList[indexPath.row].name
             self.navigationController?.pushViewController(marvelDetailView, animated: true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        marvelList.isLastCell(indexRow: indexPath.row)
     }
     
 }
@@ -68,6 +70,11 @@ extension MarvelListViewController: MarvelListViewModelDelegate {
             marvelListCollectionView.reloadData()
         }
         hideActivityIndicator()
+    }
+    
+    func fetchMarvelCharactersList() {
+        showActivityIndicator()
+        marvelList.fetchMarvelList(offsetValue: marvelList.marvelResultList.count)
     }
 }
 

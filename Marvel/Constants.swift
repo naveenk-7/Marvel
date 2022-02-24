@@ -25,4 +25,6 @@ struct Constants {
     static let stringFormat = "%02hhx"
     static let empty = ""
     static let characters = "characters"
+    static let offsetValue = 0
+    static let offset = "offset"
 }

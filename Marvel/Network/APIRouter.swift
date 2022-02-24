@@ -18,8 +18,8 @@ enum APIRouter: URLRequestConvertible {
     private static let publicKey =  ProcessInfo.processInfo.environment[Constants.publicKey]
     private static let privateKey = ProcessInfo.processInfo.environment[Constants.privateKey]
     
-    case listPage
-    case detailPage(characterID: String)
+    case listPage(offset: Int)
+    case detailPage(characterID: Int)
     
     private var method: HTTPMethod {
         switch self {
@@ -42,7 +42,13 @@ enum APIRouter: URLRequestConvertible {
         let ts = Date().timeIntervalSince1970
         params[Constants.hash] = hashValueForTimeStamp(timeStamp: ts)
         params[Constants.ts] = String(ts)
-        return params
+        switch self {
+        case .listPage(let offset):
+            params[Constants.offset] = offset
+            return params
+        case .detailPage:
+            return params
+        }
     }
     
     func asURLRequest() throws -> URLRequest {

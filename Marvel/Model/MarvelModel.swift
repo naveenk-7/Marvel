@@ -40,4 +40,5 @@ struct Thumbnail: Codable {
 enum Extension: String, Codable {
     case gif = "gif"
     case jpg = "jpg"
+    case png = "png"
 }

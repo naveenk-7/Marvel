@@ -10,16 +10,18 @@ import Alamofire
 
 protocol MarvelListViewModelDelegate: NSObjectProtocol {
     func marvelListResponse()
+    func fetchMarvelCharactersList()
 }
 
 class MarvelListViewModel {
     
     weak var delegate: MarvelListViewModelDelegate?
     var marvelModelList: Marvel?
+    var marvelResultList = [Result]()
     
     // Fetch marvel list
-    func fetchMarvelList() {
-        AF.request(APIRouter.listPage).response { response in
+    func fetchMarvelList(offsetValue: Int) {
+        AF.request(APIRouter.listPage(offset: offsetValue)).response { response in
             guard response.error == nil else {
                 print(response.error as Any)
                 self.delegate?.marvelListResponse()
@@ -29,6 +31,7 @@ class MarvelListViewModel {
                 do {
                     let result = try JSONDecoder().decode(Marvel.self, from: data)
                     self.marvelModelList = result
+                    self.marvelResultList.append(contentsOf: result.data.results)
                     self.delegate?.marvelListResponse()
                 }
                 catch {
@@ -39,6 +42,15 @@ class MarvelListViewModel {
             else {
                 print(response.error.debugDescription)
                 self.delegate?.marvelListResponse()
+            }
+        }
+    }
+    
+    // To find the last cell and make api call
+    func isLastCell(indexRow: Int) {
+        if let total = self.marvelModelList?.data.total {
+            if indexRow == marvelResultList.count - 1 && indexRow < total {
+                self.delegate?.fetchMarvelCharactersList()
             }
         }
     }

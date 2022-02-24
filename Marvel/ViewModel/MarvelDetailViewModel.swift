@@ -18,7 +18,7 @@ class MarvelDetailViewModel {
     var marvelModelDetail: Marvel?
     
     // Fetch marvel detail
-    func fetchMarvelDetail(characterID: String) {
+    func fetchMarvelDetail(characterID: Int) {
         AF.request(APIRouter.detailPage(characterID: characterID)).response { response in
             guard response.error == nil else {
                 print(response.error as Any)

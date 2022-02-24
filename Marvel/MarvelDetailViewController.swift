@@ -27,7 +27,7 @@ class MarvelDetailViewController: UIViewController {
         marvelDetail.delegate = self
         showActivityIndicator()
         // Fetch marvel detail API
-        marvelDetail.fetchMarvelDetail(characterID: String(characterID))
+        marvelDetail.fetchMarvelDetail(characterID: characterID)
     }
 
 }
