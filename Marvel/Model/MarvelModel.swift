@@ -22,9 +22,18 @@ struct DataClass: Codable {
 struct Result: Codable {
     let id: Int
     let name, description: String
-    let modified: String
     let thumbnail: Thumbnail
-    let resourceURI: String
+    let comics, series: Comics
+}
+
+// MARK: - Comics
+struct Comics: Codable {
+    let items: [ComicsItem]
+}
+
+// MARK: - ComicsItem
+struct ComicsItem: Codable {
+    let name: String
 }
 
 struct Thumbnail: Codable {
