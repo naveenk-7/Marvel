@@ -3,8 +3,9 @@ Marvel Characters iOS app
 
 ## About
 
-This project contains the list of Marvel characters and desriptions
-Followed MVVM pattern
+This project developed by using swift language and MVVM pattern, it contains the list of Marvel characters and detailed desription
+It has network layer, viewModel layer, model layer and view layer, and also it contains the unit testcase and also uitest Case
+
 
 ## Features
 
@@ -14,4 +15,12 @@ Followed MVVM pattern
 <p align="center">
   <img src="./ReadMeAssets/characterList.png" height="512">
   <img src="./ReadMeAssets/characterDetail.png" height="512">
+</p>
+
+
+To run the app, need to add the public and private API keys in scheme.
+Steps -> Go to schemes in Marvel and select Edit Scheme and select the Run option now you able to see the private and public keys under Environment Variables.
+
+<p align="center">
+  <img src="./ReadMeAssets/api_key.png" height="512">
 </p>

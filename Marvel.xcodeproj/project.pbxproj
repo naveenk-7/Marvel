@@ -151,14 +151,12 @@
 			isa = PBXGroup;
 			children = (
 				6B4CE54227C6174400D28866 /* Extension */,
-				6BCF75E127C5094200E2D7F4 /* Cell */,
 				6BCF75DE27C5067000E2D7F4 /* ViewModel */,
 				6BCF75DB27C4FF5600E2D7F4 /* Model */,
 				6BCF75D827C4FB5500E2D7F4 /* Network */,
+				6BD0EDFA27D529F100FE6E02 /* View */,
 				6BCF75A827C4FB1200E2D7F4 /* AppDelegate.swift */,
 				6BCF75AA27C4FB1200E2D7F4 /* SceneDelegate.swift */,
-				6BCF75AC27C4FB1200E2D7F4 /* MarvelListViewController.swift */,
-				6BCF75E627C5299700E2D7F4 /* MarvelDetailViewController.swift */,
 				6B4CE54527C639DD00D28866 /* Constants.swift */,
 				6BCF75AE27C4FB1200E2D7F4 /* Main.storyboard */,
 				6BCF75B127C4FB1300E2D7F4 /* Assets.xcassets */,
@@ -216,6 +214,16 @@
 				6BCF75E827C52D2100E2D7F4 /* MarvelDetailTableCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		6BD0EDFA27D529F100FE6E02 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6BCF75E127C5094200E2D7F4 /* Cell */,
+				6BCF75AC27C4FB1200E2D7F4 /* MarvelListViewController.swift */,
+				6BCF75E627C5299700E2D7F4 /* MarvelDetailViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A893A33F9699C8F2E98CDC96 /* Pods */ = {
