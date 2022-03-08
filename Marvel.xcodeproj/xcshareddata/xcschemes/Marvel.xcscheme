@@ -124,7 +124,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "PUBLIC_KEY"
-            value = "28abefb8ed36336649bbe268b015165d"
+            value = ""
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
