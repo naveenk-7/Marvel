@@ -5,6 +5,7 @@ Marvel Characters iOS app
 
 This project developed by using swift language and MVVM pattern, it contains the list of Marvel characters and detailed desription
 It has network layer, viewModel layer, model layer and view layer, and also it contains the unit testcase and also uitest Case
+It contains third-party libraries, so do pod install and run the app
 
 
 ## Features
